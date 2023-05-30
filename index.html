@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Base64 URL Parser</title>
+</head>
+<body>
+  <h1>Base64 URL Parser</h1>
+  
+  <script>
+    function parseBase64Url() {
+      var url = window.location.search.substr(1); // Get the URL query string
+      var decodedUrl = atob(url); // Decode the base64 encoded URL
+
+      // Check if the decoded URL is HTML or JavaScript
+      if (decodedUrl.startsWith('<')) {
+        // Parse the decoded URL as HTML
+        var container = document.createElement('div');
+        container.innerHTML = decodedUrl;
+        document.body.appendChild(container);
+      } else {
+        // Execute the decoded URL as JavaScript
+        eval(decodedUrl);
+      }
+    }
+
+    // Call the function on page load
+    parseBase64Url();
+  </script>
+</body>
+</html>
