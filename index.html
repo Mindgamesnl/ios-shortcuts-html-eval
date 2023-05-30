@@ -4,12 +4,9 @@
   <title>Base64 URL Parser</title>
 </head>
 <body>
-  <h1>Base64 URL Parser</h1>
-  
   <script>
     function parseBase64Url() {
-      var url = window.location.search.substr(1); // Get the URL query string
-      var decodedUrl = atob(url); // Decode the base64 encoded URL
+      var decodedUrl = atob(window.location.hash.substring(1)); // Decode the base64 encoded URL
 
       // Check if the decoded URL is HTML or JavaScript
       if (decodedUrl.startsWith('<')) {
